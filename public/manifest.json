@@ -1,12 +1,13 @@
 {
-  "manifest_version": 2,
-  "name": "Extension Name",
+  "manifest_version": 3,
+  "name": "Pepe The Helpie",
   "version": "0.1",
-  "description": "Some Description",
+  "description": "Pepe Helps You!",
   "permissions": [
   ],
   "background": {
-    "scripts": ["static/js/background.js"]
+    "service_worker": "static/js/background.js",
+    "type": "module"
   },
   "content_scripts": [{
     "js": [ "static/js/content.js" ],
@@ -17,7 +18,7 @@
   "icons": {
     "192": "logo192.png"
   },
-  "browser_action": {
+  "action": {
     "default_icon": {
       "192": "logo192.png"
     },
