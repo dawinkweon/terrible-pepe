@@ -13,8 +13,20 @@
     "react-scripts": "5.0.1",
     "typescript": "^3.9.10"
   },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ignore": [
+      "src/*.test.ts"
+    ],
+    "ext": "ts,tsx,json",
+    "exec": "npm run build",
+    "delay": "5"
+  },
   "scripts": {
     "start": "react-scripts start",
+    "watch": "nodemon",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
@@ -40,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
