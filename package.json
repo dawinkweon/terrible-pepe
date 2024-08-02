@@ -13,17 +13,6 @@
     "react-scripts": "5.0.1",
     "typescript": "^3.9.10"
   },
-  "nodemonConfig": {
-    "watch": [
-      "src"
-    ],
-    "ignore": [
-      "src/*.test.ts"
-    ],
-    "ext": "ts,tsx,json",
-    "exec": "npm run build",
-    "delay": "5"
-  },
   "scripts": {
     "start": "react-scripts start",
     "watch": "nodemon",
