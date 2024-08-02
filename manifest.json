@@ -1,0 +1,11 @@
+{
+  "name": "terrible-pepe",
+  "version": "1.0.0",
+  "description": "Productivity tool made with Pepe",
+  "manifest_version": 3,
+  "author": "Awesome Team",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Pepe Helps You"
+  }
+}
