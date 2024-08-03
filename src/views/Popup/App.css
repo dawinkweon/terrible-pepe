@@ -12,21 +12,82 @@ code {
     monospace;
 }
 
-.App {
+.popup-container {
+  padding: 15px;
+  border: 2px solid #22262f;
   text-align: center;
+  background-color: #fff;
+  color: #22262f;
+  width: 500px;
+  border-radius: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.popup-body {
+  display: flex;
+}
+
+.popup-heading {
+  font-size: 25px;
+}
+
+.setting-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.setting-icon {
+  font-size: 25px;
+}
+
+.mode {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 50%;
 }
 
-.App-link {
-  color: #61dafb;
+.mode-image {
+  width: 200px;
+  height: 200px;
 }
+
+.mode-text {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* Light Mode */
+.off-text-light {
+  color: #22262f;
+}
+
+.status-text-red {
+  color: #ff3131;
+}
+
+.status-text-green {
+  color: #528138;
+}
+
+/* Dark mode:
+BG Colour: #22262F
+Text Colour: #FFF
+Off: #FFF
+On-Red: #FF3131
+On-Green: #80C758
+Border: none
+
+Light mode:
+BG Colour: #FFF
+Text Colour: #22262F
+Off: #22262F
+On-Red: #FF3131
+On-Green: #528138
+Border: 1px #22262F solid */
