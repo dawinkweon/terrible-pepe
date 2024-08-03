@@ -1,7 +1,7 @@
 
 const miliseconds = 1000;
 const ASSETS_PATH = "./assets/";
-let coroutine: NodeJS.Timeout;
+let coroutine: NodeJS.Timeout | undefined;
 
 export const SoundEffects = {
     audio1 :  ASSETS_PATH + "sfx_pop_up_appear.mp3",
