@@ -4,6 +4,7 @@
   "version": "0.1",
   "description": "Pepe Helps You!",
   "permissions": [
+    "tabs"
   ],
   "background": {
     "service_worker": "static/js/background.js",
@@ -11,7 +12,7 @@
   },
   "content_scripts": [{
     "js": [ "static/js/content.js" ],
-    "matches": ["<all_urls>"]
+    "matches": ["*://*/*"]
   }],
   "icons": {
     "192": "logo192.png"
