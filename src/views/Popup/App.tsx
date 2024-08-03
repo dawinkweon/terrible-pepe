@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaCog } from 'react-icons/fa';
 import './App.css';
 import ModeCard from '../../components/ModeCard/ModeCard';
@@ -14,6 +14,26 @@ function App() {
     eyeSaverMode: false,
   });
 
+  useEffect(() => {
+    chrome.storage.local.get(['modeStatus'], (result) => {
+      console.log(result);
+      if (result.modeStatus) {
+        setModeStatus(result.modeStatus);
+      }
+    });
+  }, []);
+
+  const updateModeStatus = (mode: keyof ModeStatusType) => {
+    setModeStatus((prev: ModeStatusType) => {
+      const newModeStatus = { ...prev, [mode]: !prev[mode] };
+
+      // Save the new state to Chrome Storage
+      chrome.storage.local.set({ modeStatus: newModeStatus });
+
+      return newModeStatus;
+    });
+  };
+
   return (
     <div className="popup-container">
       <header className="popup-header">
@@ -28,24 +48,14 @@ function App() {
       <div className="popup-body">
         <ModeCard
           modeStatus={modeStatus.grindingMode}
-          setModeStatus={() =>
-            setModeStatus((prev: ModeStatusType) => ({
-              ...prev,
-              grindingMode: !prev.grindingMode,
-            }))
-          }
+          setModeStatus={() => updateModeStatus('grindingMode')}
           imgSrcOff={'/images/btn_crunch_mode_off.png'}
           imgSrcOn={'/images/btn_crunch_mode_on.png'}
           modeName={'Grinding Mode'}
         />
         <ModeCard
           modeStatus={modeStatus.eyeSaverMode}
-          setModeStatus={() =>
-            setModeStatus((prev: ModeStatusType) => ({
-              ...prev,
-              eyeSaverMode: !prev.eyeSaverMode,
-            }))
-          }
+          setModeStatus={() => updateModeStatus('eyeSaverMode')}
           imgSrcOff={'/images/btn_eye_saver_mode_off.png'}
           imgSrcOn={'/images/btn_eye_saver_mode_on.png'}
           modeName={'Eye-Saver Mode'}
