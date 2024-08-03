@@ -18,7 +18,7 @@
   "scripts": {
     "start": "react-scripts start --watch",
     "watch": "nodemon",
-    "build": "react-app-rewired build",
+    "build": "react-app-rewired build && open-cli --background 'http://reload.extensions'",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
@@ -47,6 +47,7 @@
   "devDependencies": {
     "@types/chrome": "^0.0.269",
     "@types/webextension-polyfill": "^0.10.7",
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "open-cli": "^8.0.0"
   }
 }
