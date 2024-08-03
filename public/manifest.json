@@ -3,7 +3,7 @@
   "name": "Pepe The Helpie",
   "version": "0.1",
   "description": "Pepe Helps You!",
-  "permissions": [],
+  "permissions": ["storage"],
   "background": {
     "service_worker": "static/js/background.js",
     "type": "module"
