@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './ToggleSwitch.css';
-import { playAudioAtURL } from '../AudioSource';
 
 interface ToggleSwitchProps {
   isOn: boolean;
