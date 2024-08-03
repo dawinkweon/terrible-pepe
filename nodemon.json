@@ -1,0 +1,8 @@
+{
+  "verbose": true,
+  "watch": ["src/","public/"],
+  "ignore": ["*.test.js"],
+  "exec": "npm run build",
+  "ext": "*",
+  "delay": "10"
+}
