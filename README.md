@@ -10,10 +10,23 @@ npm start
 
 ### For browser plugin development
 
-1. Start the watcher to auto rebuild on file changes in `src/` every 10 seconds
+1. Install the [Extensions Reloader](https://chromewebstore.google.com/detail/extensions-reloader/fimgfedafeadlieiabdeeaodndnlbhid)
+
+2. Start the watcher to auto rebuild on file changes in `src/` every 10 seconds
 
 ```
 npm run watch
 ```
 
-2. Go to browser and click refresh to reload the plugin
+The browser will open at http://reload.extensions automatically but can be disabled by running
+
+```
+npm run watch:noreload
+```
+
+To reduce the build delay update [nodemon.json](./nodemon.json)
+```
+{
+  "delay": "10" // in seconds
+}
+```
