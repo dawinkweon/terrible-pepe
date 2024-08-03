@@ -25,5 +25,11 @@
   },
   "options_ui": {
     "page": "options.html"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["*.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
