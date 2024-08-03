@@ -1,5 +1,4 @@
-import {runtime, tabs} from "webextension-polyfill"
-import { playAudioAtURL } from "./components/AudioSource";
+import {runtime, tabs} from "webextension-polyfill";
 import { changeImages } from "./utils/changeImages";
 //playAudioAtURL(runtime.getURL("./assets/sfx_pop_appear.mp3"), false);
 
