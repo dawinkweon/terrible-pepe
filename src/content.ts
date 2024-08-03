@@ -1,9 +1,8 @@
-import OverlayImage from "./components/OverlayImage"; 
-console.log('Hello Content');
-export {}
+import React from 'react'
 
-const init = () => {
-    OverlayImage().on();
+const content = () => {
+
 }
 
-init();
+export default content
+
