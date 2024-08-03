@@ -25,7 +25,7 @@ const ModeCard = ({
       />
       <h2 className="mode-text">{modeName}</h2>
       <div className="mode-switch">
-        <ToggleSwitch isOn={modeStatus} onToggle={setModeStatus} toggleName={modeName}/>
+        <ToggleSwitch isOn={modeStatus} onToggle={setModeStatus}/>
       </div>
     </div>
   );
