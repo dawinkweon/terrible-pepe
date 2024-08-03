@@ -1,7 +1,6 @@
 
-export  function playAudioAtURL( url: string ,isLoop: boolean){
+export  function playAudioAtURL( url: string){
     const audio = new Audio(url);
-    audio.loop = isLoop;
     audio.play();
     console.log("Looping audio source");
 }
