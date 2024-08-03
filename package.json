@@ -14,7 +14,7 @@
     "typescript": "^3.9.10"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --watch",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
