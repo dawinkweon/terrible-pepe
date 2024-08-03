@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaCog } from 'react-icons/fa';
 import './App.css';
-import ToggleSwitch from '../../components/ToggleSwitch/ToggleSwitch';
+import ModeCard from '../../components/ModeCard/ModeCard';
+
+type ModeStatusType = {
+  grindingMode: boolean;
+  eyeSaverMode: boolean;
+};
 
 function App() {
+  const [modeStatus, setModeStatus] = useState<ModeStatusType>({
+    grindingMode: false,
+    eyeSaverMode: false,
+  });
+
   return (
     <div className="popup-container">
       <header className="popup-header">
@@ -15,42 +25,31 @@ function App() {
           <FaCog className="setting-icon" />
         </button>
       </header>
-
       <div className="popup-body">
-        <div className="mode">
-          {/* Img will be added here */}
-          <img
-            src="/images/btn_crunch_mode_off.png"
-            alt="grinding mode image"
-            className="mode-image"
-          />
-          <h2 className="mode-text">Grinding Mode</h2>
-          <div className="mode-switch">
-            <ToggleSwitch
-              isOn={true}
-              onToggle={() => {
-                console.log('yo');
-              }}
-            />
-          </div>
-        </div>
-        <div className="mode">
-          {/* Img will be added here */}
-          <img
-            src="/images/btn_eye_saver_mode_off.png"
-            alt="eyesaver mode image"
-            className="mode-image"
-          />
-          <h2 className="mode-text">Eye-Saver Mode</h2>
-          <div className="mode-switch">
-            <ToggleSwitch
-              isOn={true}
-              onToggle={() => {
-                console.log('yo');
-              }}
-            />
-          </div>
-        </div>
+        <ModeCard
+          modeStatus={modeStatus.grindingMode}
+          setModeStatus={() =>
+            setModeStatus((prev: ModeStatusType) => ({
+              ...prev,
+              grindingMode: !prev.grindingMode,
+            }))
+          }
+          imgSrcOff={'/images/btn_crunch_mode_off.png'}
+          imgSrcOn={'/images/btn_crunch_mode_on.png'}
+          modeName={'Grinding Mode'}
+        />
+        <ModeCard
+          modeStatus={modeStatus.eyeSaverMode}
+          setModeStatus={() =>
+            setModeStatus((prev: ModeStatusType) => ({
+              ...prev,
+              eyeSaverMode: !prev.eyeSaverMode,
+            }))
+          }
+          imgSrcOff={'/images/btn_eye_saver_mode_off.png'}
+          imgSrcOn={'/images/btn_eye_saver_mode_on.png'}
+          modeName={'Eye-Saver Mode'}
+        />
       </div>
     </div>
   );
