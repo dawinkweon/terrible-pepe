@@ -1,5 +1,8 @@
+import React from "react";
 import { runtime } from "webextension-polyfill";
-
+import Dialog from "./Dialog/Dialog";
+import ReactDOM from "react-dom";
+import AnswerModal from "./AnswerModal/AnswerModal";
 export default function OverlayImage() {
   const createDiv = document.createElement("div") as HTMLDivElement;
   const createImage = document.createElement("img") as HTMLImageElement;
@@ -22,6 +25,7 @@ export default function OverlayImage() {
     getOverlay.style.backgroundColor = "black";
     getOverlay.style.opacity = "0.7";
     getOverlay.style.height = "100%";
+    getOverlay.style.width = "100%";
     getOverlay.style.top = "0";
     getOverlay.style.left = "0";
     getOverlay.style.zIndex = "999999";
@@ -36,9 +40,22 @@ export default function OverlayImage() {
   function off() {
     // getImage!.style.display = "none";
   }
-
+  function eyeSaver() {
+    ReactDOM.render(
+      <>
+        <AnswerModal />
+        <Dialog
+          profileImg="chrome-extension://oajmlfllhbbhigcjmaanldbhfojodiil/images/ic_pepe_doctor.png"
+          speaker="Pepe The Helpie"
+          saying="Pepe Helps You!"
+        />
+      </>,
+      document.getElementById("overlay")
+    );
+  }
   return {
     on,
     off,
+    eyeSaver,
   };
 }

@@ -17,8 +17,10 @@ function changeImages(imgs: HTMLCollectionOf<HTMLImageElement>) {
 }
 
 const init = () => {
-  changeImages(document.getElementsByTagName("img"));
-  OverlayImage().on();
+  //   changeImages(document.getElementsByTagName("img"));
+    // OverlayImage().on();
+
+  OverlayImage().eyeSaver();
 };
 
 init();
