@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { FaCog } from 'react-icons/fa';
 import './App.css';
 import ModeCard from '../../components/ModeCard/ModeCard';
+import Setting from '../../components/Setting/Setting';
 
 type ModeStatusType = {
   grindingMode: boolean;
@@ -13,6 +13,7 @@ function App() {
     grindingMode: false,
     eyeSaverMode: false,
   });
+  const [isSettingOpen, setIsSettingOpen] = useState(false);
 
   useEffect(() => {
     chrome.storage.local.get(['modeStatus'], (result) => {
@@ -38,12 +39,10 @@ function App() {
     <div className="popup-container">
       <header className="popup-header">
         <h1 className="popup-heading">Pepe The Helpie</h1>
-        <button
-          className="setting-btn"
-          onClick={() => console.log('button clicked')}
-        >
-          <FaCog className="setting-icon" />
-        </button>
+        <Setting
+          isSettingOpen={isSettingOpen}
+          setIsSettingOpen={setIsSettingOpen}
+        />
       </header>
       <div className="popup-body">
         <ModeCard

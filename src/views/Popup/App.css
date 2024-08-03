@@ -13,12 +13,12 @@ code {
 }
 
 .popup-container {
-  padding: 15px;
+  padding: 5px 15px;
   border: 2px solid #22262f;
   text-align: center;
   background-color: #fff;
   color: #22262f;
-  width: 500px;
+  width: 400px;
 }
 
 .popup-header {
@@ -32,17 +32,18 @@ code {
 }
 
 .popup-heading {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .setting-btn {
+  position: relative;
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
 
 .setting-icon {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .mode {
@@ -53,12 +54,12 @@ code {
 }
 
 .mode-image {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
 }
 
 .mode-text {
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 10px;
 }
 
@@ -90,3 +91,36 @@ Off: #22262F
 On-Red: #FF3131
 On-Green: #528138
 Border: 1px #22262F solid */
+
+/* Setting Dropdown */
+.setting-dropdown {
+  position: fixed;
+  top: 30px;
+  right: 32px;
+  border: 2px solid #22262f;
+}
+
+.setting-menu {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+}
+
+.setting-item {
+  padding: 10px 0;
+  width: 100%;
+}
+
+.setting-item:hover {
+  background-color: rgba(211, 211, 211, 0.9);
+}
+
+.setting-item-btn {
+  background-color: transparent;
+  border: none;
+}
