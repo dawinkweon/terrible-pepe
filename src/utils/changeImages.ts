@@ -1,20 +1,21 @@
-import { runtime } from "webextension-polyfill";
+import runtime from "./runtime";
 
-export function changeImages(imgs: HTMLCollectionOf<HTMLImageElement>) {
-  console.debug("Changing images...");
-    for (let i = 0; i < imgs.length; i++) {
-      let r = Math.floor(Math.random() * 14);
-      let file = `images/pepe${r + 1}.png`;
-      let url = runtime.getURL(file);
-  
-      const img = imgs.item(i);
-      img?.setAttribute("currentSrc", url);
-  
-      img!.src = url;
-    }
-}
+const PEPE_FILENAME_TOKENS = ["pepe"];
 
-export function changeImagesV2(imgs: Array<HTMLImageElement>) {
+const changeImagesToPepe = (imgs: HTMLImageElement[]) => {
+  // only change non pepe images
+  const imagesToChange = imgs.filter((img) => !isPepeImageUrl(img.src));
+  changeImages(imagesToChange);
+};
+
+const isPepeImageUrl = (imgUrl: string): boolean => {
+  const matches = PEPE_FILENAME_TOKENS.filter((token) =>
+    imgUrl.toUpperCase().includes(token.toUpperCase())
+  );
+  return matches.length > 0;
+};
+
+const changeImages = (imgs: Array<HTMLImageElement>) => {
   console.debug("Changing images...");
   for (let img of imgs) {
     let r = Math.floor(Math.random() * 14);
@@ -25,4 +26,6 @@ export function changeImagesV2(imgs: Array<HTMLImageElement>) {
 
     img!.src = url;
   }
-}
+};
+
+export { changeImagesToPepe };
