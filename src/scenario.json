@@ -35,7 +35,7 @@
   {
     "id": 4,
     "title": "Don't troll with me!",
-    "icon_name": "image/ic_pepe_punch.png",
+    "icon_name": "images/ic_pepe_punch.png",
     "is_dismissable": true,
     "timeout_sec": 0,
     "timeout": null,
@@ -44,7 +44,7 @@
   {
     "id": 5,
     "title": "Are you ignoring me?",
-    "icon_name": "image/ic_pepe_annoyed.png",
+    "icon_name": "images/ic_pepe_annoyed.png",
     "is_dismissable": true,
     "timeout_sec": 3,
     "timeout": 6,
@@ -53,7 +53,7 @@
   {
     "id": 6,
     "title": "No reply? Are you slacking off?",
-    "icon_name": "image/ic_pepe_yell.png",
+    "icon_name": "images/ic_pepe_yell.png",
     "is_dismissable": false,
     "timeout_sec": 3,
     "timeout": 7,
@@ -62,7 +62,7 @@
   {
     "id": 7,
     "title": "Alright, Respond or I'll assume you are goofing off!",
-    "icon_name": "image/ic_pepe_angry.png",
+    "icon_name": "images/ic_pepe_angry.png",
     "is_dismissable": false,
     "timeout_sec": 3,
     "timeout": 8,
@@ -71,7 +71,7 @@
   {
     "id": 8,
     "title": "ARRGGH!",
-    "icon_name": "image/ic_pepe_angry_yell.png",
+    "icon_name": "images/ic_pepe_angry_yell.png",
     "is_dismissable": false,
     "timeout_sec": 3,
     "timeout": null,
@@ -80,7 +80,7 @@
   {
     "id": 9,
     "title": "If you ignore me again, you will face the consequences! I'm not joking!",
-    "icon_name": "image/ic_pepe_gun.png",
+    "icon_name": "images/ic_pepe_gun.png",
     "is_dismissable": true,
     "timeout_sec": 0,
     "timeout": null,
