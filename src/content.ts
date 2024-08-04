@@ -5,7 +5,7 @@ console.log("Hello Content");
 export {};
 
 const init = () => {
-  OverlayImage().on();
+  OverlayImage().showDialog("testimage", "test", "test");
 };
 
 init();
