@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Dialog.css';
 import scenario from '../../scenario.json';
+import { UpdateResultEvent } from '../UpdateResultEvent';
 
 interface DialogProps {
   profileImg: string;
   speaker: string;
   saying: string;
+  updateResultEvent: UpdateResultEvent
 }
 
 interface ScenarioState {
@@ -23,9 +25,8 @@ interface ScenarioState {
 
 //let scenarioTimer: NodeJS.Timeout | null;
 
-const Dialog = ({ profileImg, speaker, saying }: DialogProps) => {
-  const [selectedScenario, setSelectedScenario] = React.useState<ScenarioState>(
-    {
+const Dialog = ({ profileImg, speaker, saying, updateResultEvent }: DialogProps) => {
+  const [selectedScenario, setSelectedScenario] = React.useState<ScenarioState> ({
       id: 1,
       title: 'Are you there?',
       icon_name: 'images/ic_pepe_snug.png',
@@ -38,6 +39,10 @@ const Dialog = ({ profileImg, speaker, saying }: DialogProps) => {
       },
     }
   );
+  updateResultEvent.addListener((result) => {
+    console.debug("Update result event received!", result);
+    // TODO do something
+  });
 
   // grindTimer = setInterval(() => {
   //   //         if (grindTimerHandler !== null) {

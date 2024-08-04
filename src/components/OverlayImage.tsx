@@ -1,8 +1,10 @@
-import React from 'react';
-import { runtime } from 'webextension-polyfill';
-import Dialog from './Dialog/Dialog';
-import ReactDOM from 'react-dom';
-import AnswerModal from './AnswerModal/AnswerModal';
+import React from "react";
+import { runtime } from "webextension-polyfill";
+import Dialog from "./Dialog/Dialog";
+import ReactDOM from "react-dom";
+import AnswerModal from "./AnswerModal/AnswerModal";
+import { UpdateResultEvent } from "./UpdateResultEvent";
+
 export default function OverlayImage() {
   const createDiv = document.createElement('div') as HTMLDivElement;
   const createImage = document.createElement('img') as HTMLImageElement;
@@ -40,11 +42,18 @@ export default function OverlayImage() {
   function off() {
     getImage.style.display = 'none';
   }
-  function showDialog(profileImg: string, speaker: string, saying: string) {
+  function showDialog(profileImg:string, speaker:string, saying: string) {
+    const updateResultEvent = new UpdateResultEvent();
+
     ReactDOM.render(
       <>
-        <AnswerModal />
-        <Dialog profileImg={profileImg} speaker={speaker} saying={saying} />
+        <AnswerModal updateResultEvent={updateResultEvent} />
+        <Dialog
+          profileImg={profileImg}
+          speaker={speaker}
+          saying={saying}
+          updateResultEvent={updateResultEvent}
+        />
       </>,
       document.getElementById('overlay')
     );
