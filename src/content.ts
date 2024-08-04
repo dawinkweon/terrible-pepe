@@ -11,6 +11,10 @@ chrome.storage.local.get(['modeStatus'], (result) => {
     //   OverlayImage().off();
     // }, 3000);
   }
+  if (result.modeStatus.eyeSaverMode) {
+    OverlayImage().EyeSaver();
+  }
+  
 });
 
 const getImages = () => document.getElementsByTagName('img');
