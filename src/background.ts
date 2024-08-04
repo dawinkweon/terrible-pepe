@@ -1,6 +1,5 @@
 import {runtime, tabs} from "webextension-polyfill"
 import { playAudioAtURL } from "./components/AudioSource";
-import { changeImages } from "./utils/changeImages";
 //playAudioAtURL(runtime.getURL("./assets/sfx_pop_appear.mp3"), false);
 
 console.log('Hello Background PEPE');
