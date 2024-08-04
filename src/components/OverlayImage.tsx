@@ -40,14 +40,14 @@ export default function OverlayImage() {
   function off() {
     // getImage!.style.display = "none";
   }
-  function eyeSaver() {
+  function showDialog(profileImg:string, speaker:string, saying: string) {
     ReactDOM.render(
       <>
         <AnswerModal />
         <Dialog
-          profileImg="chrome-extension://oajmlfllhbbhigcjmaanldbhfojodiil/images/ic_pepe_doctor.png"
-          speaker="Pepe The Helpie"
-          saying="Pepe Helps You!"
+          profileImg={profileImg}
+          speaker={speaker}
+          saying={saying}
         />
       </>,
       document.getElementById("overlay")
@@ -56,6 +56,7 @@ export default function OverlayImage() {
   return {
     on,
     off,
-    eyeSaver,
+    showDialog,
   };
 }
+
