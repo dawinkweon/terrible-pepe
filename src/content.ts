@@ -24,6 +24,13 @@ const init = async () => {
 const initGrindingMode = () => {
   OverlayImage().showDialog();
 
+  updateImages();
+
+  // keep updating on a timer
+  setInterval(() => {
+    updateImages();
+  }, config.ImageToPepeUpdateRateInMillis);
+
   // setInterval(() => {
   //   OverlayImage().off();
   // }, 3000);
