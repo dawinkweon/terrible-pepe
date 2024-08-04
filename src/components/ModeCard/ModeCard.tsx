@@ -20,7 +20,7 @@ const ModeCard = ({
     <div className="mode">
       <img
         src={modeStatus ? imgSrcOn : imgSrcOff}
-        alt="mode image"
+        alt=""
         className="mode-image"
       />
       <h2 className="mode-text">{modeName}</h2>
