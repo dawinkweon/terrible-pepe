@@ -1,0 +1,33 @@
+name: Terrible Pepe Build Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - '.env'
+      - 'package.json'
+  pull_request:
+    paths:
+      - 'src/**'
+      - '.env'
+      - 'package.json'
+
+env:
+  NODE_VERSION: 18
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - run: npm install
+      - run: npm test
+      - run: npm run build
