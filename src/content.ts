@@ -8,8 +8,11 @@ chrome.storage.local.get(['modeStatus'], (result) => {
     // setInterval(() => {
     //   OverlayImage().off();
     // }, 3000);
-  } 
-  // OverlayImage().EyeSaver();
+  }
+  if (result.modeStatus.eyeSaverMode) {
+    OverlayImage().EyeSaver();
+  }
+  
 });
 
 runtime.onMessage.addListener(function (msg, sender, sendResponse) {
