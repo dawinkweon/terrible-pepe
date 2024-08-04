@@ -1,8 +1,9 @@
-import * as React from "react";
+import React from "react";
 import { runtime } from "webextension-polyfill";
-import Dialog from "./Dialog/Dialog";
+import Dialog, { ScenarioState } from "./Dialog/Dialog";
 import ReactDOM from "react-dom";
 import AnswerModal from "./AnswerModal/AnswerModal";
+import { UpdateResultEvent } from "./UpdateResultEvent";
 
 export default function OverlayImage() {
   const createDiv = document.createElement("div") as HTMLDivElement;
@@ -41,13 +42,15 @@ export default function OverlayImage() {
     getImage.style.zIndex = "9999999";
   }
   function off() {
-    // getImage!.style.display = "none";
+    getImage.style.display = "none";
   }
-  function showDialog(profileImg: string, speaker: string, saying: string) {
+  function showDialog() {
+    const updateResultEvent = new UpdateResultEvent();
+
     ReactDOM.render(
       <>
-        <AnswerModal />
-        <Dialog profileImg={profileImg} speaker={speaker} saying={saying} />
+        <AnswerModal updateResultEvent={updateResultEvent} />
+        <Dialog updateResultEvent={updateResultEvent} />
       </>,
       document.getElementById("overlay")
     );
@@ -92,12 +95,17 @@ export default function OverlayImage() {
         ) : (
           <></>
         )}
-        <Dialog
-          profileImg="images/ic_pepe_doctor.png"
-          speaker="[Pepe The Helpie]"
-          saying={`${saying}`}
-          // saying={`${saying}`}
-        />
+        <div className="dialog-container">
+          <img
+            src={`${url}`}
+            alt="doctor_pepe"
+            className="dialog-profile"
+          />
+          <div className="dialog-textBox">
+            <h3 className="dialog-name">[Pepe The Helpie]</h3>
+            <p className="dialog-text">{saying}</p>
+          </div>
+        </div>
       </div>
     );
   }
