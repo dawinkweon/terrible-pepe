@@ -3,13 +3,13 @@ import { runtime } from 'webextension-polyfill';
 import { changeImages } from './utils/changeImages';
 
 chrome.storage.local.get(['modeStatus'], (result) => {
-  // if (result.modeStatus.grindingMode) {
-  //   OverlayImage().showDialog();
-  //   // setInterval(() => {
-  //   //   OverlayImage().off();
-  //   // }, 3000);
-  // } 
-  OverlayImage().EyeSaver();
+  if (result.modeStatus.grindingMode) {
+    OverlayImage().showDialog();
+    // setInterval(() => {
+    //   OverlayImage().off();
+    // }, 3000);
+  } 
+  // OverlayImage().EyeSaver();
 });
 
 runtime.onMessage.addListener(function (msg, sender, sendResponse) {
