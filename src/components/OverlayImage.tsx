@@ -1,6 +1,6 @@
 import React from "react";
 import { runtime } from "webextension-polyfill";
-import Dialog, { ScenarioState } from "./Dialog/Dialog";
+import Dialog from "./Dialog/Dialog";
 import ReactDOM from "react-dom";
 import AnswerModal from "./AnswerModal/AnswerModal";
 import { UpdateResultEvent } from "./UpdateResultEvent";

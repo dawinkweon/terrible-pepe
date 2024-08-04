@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Dialog.css';
 import { runtime } from 'webextension-polyfill';
 import scenario from '../../scenario.json';
 import { UpdateResultEvent } from '../UpdateResultEvent';
-import OverlayImage from '../OverlayImage';
 
 const typedSecnario: Array<ScenarioState> = scenario;
 
@@ -71,8 +70,8 @@ const Dialog = ({ updateResultEvent }: DialogProps) => {
     <div className="dialog-container">
       <img
         src={runtime.getURL(selectedScenario.icon_name)}
-        alt="pepe image"
         className="dialog-profile"
+        alt=''
       />
       <div className="dialog-textBox">
         <h3 className="dialog-name">Pepe</h3>
