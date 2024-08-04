@@ -2,7 +2,7 @@
   "verbose": true,
   "watch": ["src/","public/"],
   "ignore": ["*.test.js"],
-  "exec": "npm run build-and-reload-extension",
+  "exec": "npm run build",
   "ext": "*",
   "delay": "10"
 }
