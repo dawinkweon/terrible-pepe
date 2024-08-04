@@ -5,7 +5,8 @@ console.log("Hello Content");
 export {};
 
 const init = () => {
-  OverlayImage().showDialog("testimage", "test", "test");
+  // OverlayImage().showDialog("testimage", "test", "test");
+  OverlayImage().EyeSaver();
 };
 
 init();
