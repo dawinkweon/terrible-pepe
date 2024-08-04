@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Dialog.css';
-import scenario from "../../../public/assets/scenario.json";
+import scenario from '../../scenario.json';
 import { UpdateResultEvent } from '../UpdateResultEvent';
 
 interface DialogProps {
@@ -11,16 +11,16 @@ interface DialogProps {
 }
 
 interface ScenarioState {
-  id: number,
-  title: string,
-  icon_name: string,
-  is_dismissable: boolean,
-  timeout_sec: number,
-  timeout: number,
+  id: number;
+  title: string;
+  icon_name: string;
+  is_dismissable: boolean;
+  timeout_sec: number;
+  timeout: number;
   answers: {
-    yes: number,
-    no: number
-  }
+    yes: number;
+    no: number;
+  };
 }
 
 //let scenarioTimer: NodeJS.Timeout | null;
@@ -28,16 +28,17 @@ interface ScenarioState {
 const Dialog = ({ profileImg, speaker, saying, updateResultEvent }: DialogProps) => {
   const [selectedScenario, setSelectedScenario] = React.useState<ScenarioState> ({
       id: 1,
-      title: "Are you there?",
-      icon_name: "images/ic_pepe_snug.png",
+      title: 'Are you there?',
+      icon_name: 'images/ic_pepe_snug.png',
       is_dismissable: false,
       timeout_sec: 3,
       timeout: 5,
       answers: {
         yes: 3,
-        no: 4
-      }
-  })
+        no: 4,
+      },
+    }
+  );
   updateResultEvent.addListener((result) => {
     console.debug("Update result event received!", result);
     // TODO do something
@@ -48,7 +49,6 @@ const Dialog = ({ profileImg, speaker, saying, updateResultEvent }: DialogProps)
   //   //           grindTimerHandler();
   //   //         }
   //   //       }, 1000 * 1);
-
 
   return (
     <div className="dialog-container">
