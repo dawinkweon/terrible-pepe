@@ -1,4 +1,4 @@
-import { EventType } from "./EventTypes";
+import { EventType } from "./EventType";
 export type Message ={
     message: string;
     evenType: EventType;

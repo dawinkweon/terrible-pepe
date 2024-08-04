@@ -18,6 +18,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
   const [isToggled, setIsToggled] = useState<boolean>(isOn);
 
   const handleToggle = () => {
+    console.log(isOn);
     const newIsToggled = !isToggled;
     setIsToggled(newIsToggled);
     onToggle(newIsToggled);
