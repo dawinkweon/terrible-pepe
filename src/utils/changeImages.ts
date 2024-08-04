@@ -1,4 +1,4 @@
-import runtime from "./runtime";
+import { runtime } from "webextension-polyfill";
 
 const PEPE_FILENAME_TOKENS = ["pepe"];
 

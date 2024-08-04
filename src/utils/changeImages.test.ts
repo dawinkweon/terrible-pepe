@@ -1,9 +1,11 @@
-jest.mock("./runtime", () => ({
-  getURL: jest.fn(),
+jest.mock("webextension-polyfill", () => ({
+  runtime: {
+    getURL: jest.fn(),
+  },
 }));
 
 // eslint-disable-next-line import/first
-import runtime from "./runtime";
+import { runtime } from "webextension-polyfill";
 // eslint-disable-next-line import/first
 import { changeImagesToPepe } from "./changeImages";
 
