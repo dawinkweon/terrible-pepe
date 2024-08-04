@@ -14,6 +14,8 @@ export default function OverlayImage() {
   let url = runtime.getURL(file);
   let punched = `./images/ic_pepe_punch.png`;
   let punchedUrl = runtime.getURL(punched);
+  let doctor = `./images/ic_pepe_doctor.png`;
+  let doctorUrl = runtime.getURL(doctor);
 
   createDiv.setAttribute("id", "overlay");
   createImage.setAttribute("id", "img");
@@ -97,7 +99,7 @@ export default function OverlayImage() {
         )}
         <div className="dialog-container">
           <img
-            src={`${url}`}
+            src={`${doctorUrl}`}
             alt="doctor_pepe"
             className="dialog-profile"
           />
