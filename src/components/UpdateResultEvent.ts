@@ -1,4 +1,4 @@
-type Listener = (result: Boolean) => void;
+type Listener = (result: boolean) => void;
 
 export class UpdateResultEvent {
   private readonly listeners: Array<Listener> = [];
@@ -11,7 +11,7 @@ export class UpdateResultEvent {
     this.listeners.push(listener);
   }
 
-  updateResult(result: Boolean) {
+  updateResult(result: boolean) {
     this.listeners.forEach((listener) => {
       listener.call(listener, result);
     });
