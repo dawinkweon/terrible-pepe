@@ -5,19 +5,22 @@ import { UpdateResultEvent } from '../UpdateResultEvent';
 //   onAnswer: (answer: string) => void;
 // }
 interface AnswerModalProps {
-  updateResultEvent: UpdateResultEvent
+  updateResultEvent: UpdateResultEvent;
 }
 
-const AnswerModal : React.FC<AnswerModalProps> = ({updateResultEvent}) => {
+const AnswerModal: React.FC<AnswerModalProps> = ({ updateResultEvent }) => {
+  const handleUpdateResult = (result: boolean) => {
+    updateResultEvent.updateResult(result);
+  };
 
-  const handleUpdateResult = (result: Boolean) => {
-    updateResultEvent.updateResult(result)
-  }
-  
   return (
     <div className="container">
-      <button className="answer-btn" onClick={() => handleUpdateResult(true)}>Yes</button>
-      <button className="answer-btn" onClick={() => handleUpdateResult(false)}>No</button>
+      <button className="answer-btn" onClick={() => handleUpdateResult(true)}>
+        Yes
+      </button>
+      <button className="answer-btn" onClick={() => handleUpdateResult(false)}>
+        No
+      </button>
     </div>
   );
 };
