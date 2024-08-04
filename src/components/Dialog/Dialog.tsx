@@ -21,6 +21,8 @@ interface ScenarioState {
   }
 }
 
+//let scenarioTimer: NodeJS.Timeout | null;
+
 const Dialog = ({ profileImg, speaker, saying }: DialogProps) => {
   const [selectedScenario, setSelectedScenario] = React.useState<ScenarioState> ({
       id: 1,
@@ -35,9 +37,12 @@ const Dialog = ({ profileImg, speaker, saying }: DialogProps) => {
       }
   })
 
-  useEffect(() => {
-    
-  },[])
+  // grindTimer = setInterval(() => {
+  //   //         if (grindTimerHandler !== null) {
+  //   //           grindTimerHandler();
+  //   //         }
+  //   //       }, 1000 * 1);
+
 
   return (
     <div className="dialog-container">
