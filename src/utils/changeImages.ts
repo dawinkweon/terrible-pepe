@@ -10,7 +10,16 @@ const changeImagesToPepe = (imgs: HTMLImageElement[]) => {
   for (const img of imagesToChange){
     const url = getRandomPepeImage();
     img!.setAttribute("currentSrc", url);
+    img!.setAttribute("srcset", url);
     img!.src = url;
+  }
+};
+
+const changeVideosToPepe = (videos : HTMLVideoElement[]) => {
+  for (const video of videos){
+    const url = runtime.getURL("videos/pepe_listening_music.gif");
+    //video!.setAttribute("href", url);
+    video!.src = url;
   }
 };
 
@@ -28,4 +37,4 @@ const getRandomPepeImage = () => {
   return runtime.getURL(file);
 }
 
-export { changeImagesToPepe };
+export { changeImagesToPepe, changeVideosToPepe };
