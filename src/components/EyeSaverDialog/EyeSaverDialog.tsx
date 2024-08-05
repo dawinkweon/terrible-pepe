@@ -49,8 +49,10 @@ const Time: React.FC<TimeProps> = ({ onDialogClosing }) => {
           alt="punched"
           style={{
             position: "fixed",
-            top: "30%",
+            top: "50%",
             left: "50%",
+            width: "100%",
+            height: "100%",
             opacity: "1.0",
             transform: "translate(-50%, -50%)",
             zIndex: "9999",

@@ -1,4 +1,4 @@
-import { changeImagesToPepe } from "./utils/changeImages";
+import { changeImagesToPepe, changeVideosToPepe } from "./utils/changeImages";
 import { config } from "./config";
 import { showEyeSaverModeDialog, showGrindingModeDialog } from "./components/OverlayImage";
 import { runtime, storage } from "webextension-polyfill";
@@ -37,5 +37,8 @@ const initEyeSaverMode = () => {
 
 const updateImages = () => {
   const imgs = Array.from(document.getElementsByTagName("img"));
+  const svgs = Array.from(document.getElementsByTagName("svg"));
+  const videos = Array.from(document.getElementsByTagName("video"));
   changeImagesToPepe(imgs);
+  changeVideosToPepe(videos);
 };

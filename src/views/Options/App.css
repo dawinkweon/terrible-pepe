@@ -30,3 +30,7 @@ code {
 .App-link {
   color: #61dafb;
 }
+
+img {
+  object-fit: cover !important;
+}
