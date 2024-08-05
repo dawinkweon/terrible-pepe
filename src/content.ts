@@ -1,40 +1,41 @@
-import OverlayImage from "./components/OverlayImage";
-import { runtime } from "webextension-polyfill";
 import { changeImagesToPepe } from "./utils/changeImages";
 import { config } from "./config";
+import { showEyeSaverModeDialog, showGrindingModeDialog } from "./components/OverlayImage";
+import { runtime, storage } from "webextension-polyfill";
 
-
-chrome.storage.local.get(["modeStatus"], (result) => {
-  if (result.modeStatus.grindingMode) {
-    OverlayImage().showDialog();
-    // setInterval(() => {
-    //   OverlayImage().off();
-    // }, 3000);
-  }
-  if (result.modeStatus.eyeSaverMode) {
-    OverlayImage().EyeSaver();
-  }
-});
-
-runtime.onMessage.addListener(function (msg, sender, sendResponse) {
+runtime.onMessage.addListener(async function (msg, sender, sendResponse) {
   if (msg.id === "tab_load_complete") {
-    init();
+    await init();
   }
 });
 
-const init = () => {
-  updateImages();
+const init = async () => {
+  const result = await storage.local.get(["modeStatus"]);
 
-  setupInterval();
+  if (result.modeStatus.grindingMode) {
+    initGrindingMode();
+  }
+
+  if (result.modeStatus.eyeSaverMode) {
+    initEyeSaverMode();
+  }
 };
+
+const initGrindingMode = () => {
+  showGrindingModeDialog();
+
+  // update images now and keep updating on a timer
+  updateImages();
+  setInterval(() => {
+    updateImages();
+  }, config.ImageToPepeUpdateRateInMillis);
+}
+
+const initEyeSaverMode = () => {
+  showEyeSaverModeDialog();
+}
 
 const updateImages = () => {
   const imgs = Array.from(document.getElementsByTagName("img"));
   changeImagesToPepe(imgs);
-}
-
-const setupInterval = () => {
-  setInterval(() => {
-    updateImages();
-  }, config.ImageToPepeUpdateRateInMillis);
 };
