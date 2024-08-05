@@ -1,19 +1,23 @@
-import React from 'react';
-import './AnswerModal.css';
-import { UpdateResultEvent } from '../UpdateResultEvent';
+import React from "react";
+import "./AnswerModal.css";
+import { UpdateResultEvent } from "../UpdateResultEvent";
 // interface AnswerModalProps {
 //   onAnswer: (answer: string) => void;
 // }
 interface AnswerModalProps {
   updateResultEvent: UpdateResultEvent;
+  isVisible: boolean;
 }
 
-const AnswerModal: React.FC<AnswerModalProps> = ({ updateResultEvent }) => {
+const AnswerModal: React.FC<AnswerModalProps> = ({
+  isVisible,
+  updateResultEvent,
+}) => {
   const handleUpdateResult = (result: boolean) => {
     updateResultEvent.updateResult(result);
   };
 
-  return (
+  return isVisible ? (
     <div className="container">
       <button className="answer-btn" onClick={() => handleUpdateResult(true)}>
         Yes
@@ -22,6 +26,8 @@ const AnswerModal: React.FC<AnswerModalProps> = ({ updateResultEvent }) => {
         No
       </button>
     </div>
+  ) : (
+    <div />
   );
 };
 
