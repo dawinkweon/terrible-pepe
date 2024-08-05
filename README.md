@@ -30,3 +30,15 @@ To reduce the build delay update [nodemon.json](./nodemon.json)
   "delay": "10" // in seconds
 }
 ```
+
+## Configuraton 
+
+**Extension related code**
+
+Uses hard coded configs in [config](./src/config.ts)
+
+**React app related config**
+
+Environment variables can be added with prefix `REACT_APP_<key>` to [env](.env) then used within the React app via `process.env.<key>`. 
+
+See the [CRA docs](https://create-react-app.dev/docs/adding-custom-environment-variables/) for more information.
