@@ -1,13 +1,15 @@
-import React from 'react';
-import './Dialog.css';
-import { runtime } from 'webextension-polyfill';
-import scenario from '../../scenario.json';
-import { UpdateResultEvent } from '../UpdateResultEvent';
+import React, { useEffect } from "react";
+import "./Dialog.css";
+import { runtime } from "webextension-polyfill";
+import scenario from "../../scenario.json";
+import { UpdateResultEvent } from "../UpdateResultEvent";
 
 const typedSecnario: Array<ScenarioState> = scenario;
 
 interface DialogProps {
   updateResultEvent: UpdateResultEvent;
+  onClosingDialog: () => void;
+  showModal: (value: boolean) => void;
 }
 
 export interface ScenarioState {
@@ -28,19 +30,23 @@ const generateNextStepId = (
   answer: boolean
 ): number | null => {
   if (currentStep.answers) {
-    return answer ? currentStep?.answers['yes'] : currentStep?.answers['no'];
+    return answer ? currentStep?.answers["yes"] : currentStep?.answers["no"];
   }
 
   return null;
 };
 //let scenarioTimer: NodeJS.Timeout | null;
 
-const Dialog = ({ updateResultEvent }: DialogProps) => {
+const Dialog = ({
+  updateResultEvent,
+  onClosingDialog,
+  showModal,
+}: DialogProps) => {
   const [selectedScenario, setSelectedScenario] = React.useState<ScenarioState>(
     {
       id: 1,
-      title: 'Are you there?',
-      icon_name: 'images/ic_pepe_snug.png',
+      title: "Are you there?",
+      icon_name: "images/ic_pepe_snug.png",
       is_dismissable: false,
       timeout_sec: 3,
       timeout: 5,
@@ -51,10 +57,30 @@ const Dialog = ({ updateResultEvent }: DialogProps) => {
     }
   );
 
+  useEffect(() => {
+    const closeAfterMillis = 5000;
+    const waitAndCloseDialog = () => {
+      const interval3 = setInterval(() => {
+        clearInterval(interval3);
+        onClosingDialog();
+      }, closeAfterMillis);
+    };
+
+    const isScenarioFinished = selectedScenario.answers === null;
+    if (isScenarioFinished) {
+      showModal(false);
+      waitAndCloseDialog();
+    }
+  }, [onClosingDialog, selectedScenario, showModal]);
+
   updateResultEvent.addListener((result) => {
-    console.debug('Update result event received!');
+    console.debug("Update result event received!");
+
     const nextStep = generateNextStepId(selectedScenario, result);
-    if (nextStep !== null) setSelectedScenario(typedSecnario[nextStep - 1]);
+    if (nextStep !== null) {
+      const nextScenario = typedSecnario[nextStep - 1];
+      setSelectedScenario(nextScenario);
+    }
     // display hiden the dialog
     // OverlayImage.off();
     // TODO do something
@@ -71,7 +97,7 @@ const Dialog = ({ updateResultEvent }: DialogProps) => {
       <img
         src={runtime.getURL(selectedScenario.icon_name)}
         className="dialog-profile"
-        alt=''
+        alt=""
       />
       <div className="dialog-textBox">
         <h3 className="dialog-name">Pepe</h3>

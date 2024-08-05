@@ -1,7 +1,7 @@
-import OverlayImage from "./components/OverlayImage";
-import { runtime, storage } from "webextension-polyfill";
 import { changeImagesToPepe } from "./utils/changeImages";
 import { config } from "./config";
+import { showEyeSaverModeDialog, showGrindingModeDialog } from "./components/OverlayImage";
+import { runtime, storage } from "webextension-polyfill";
 
 runtime.onMessage.addListener(async function (msg, sender, sendResponse) {
   if (msg.id === "tab_load_complete") {
@@ -22,22 +22,17 @@ const init = async () => {
 };
 
 const initGrindingMode = () => {
-  OverlayImage().showDialog();
+  showGrindingModeDialog();
 
+  // update images now and keep updating on a timer
   updateImages();
-
-  // keep updating on a timer
   setInterval(() => {
     updateImages();
   }, config.ImageToPepeUpdateRateInMillis);
-
-  // setInterval(() => {
-  //   OverlayImage().off();
-  // }, 3000);
 }
 
 const initEyeSaverMode = () => {
-  OverlayImage().EyeSaver();
+  showEyeSaverModeDialog();
 }
 
 const updateImages = () => {
