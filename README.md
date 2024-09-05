@@ -3,12 +3,24 @@
 
 ### For react app development and hot reloading
 
-Start the react dev server
+Most of the react components can be developed using the react dev server.
+
+1. Start the react dev server
 ```
 npm start
 ```
 
+2. Click the link to the react component being developed or use the permalink route
+
+> Example: The grinding mode dialog can be reached on http://localhost:3000/grinding 
+
+#### Adding a new component
+
+To add a new component, go to the `DevelopmentApp` and add a new route entry to show it on the screen for development.
+
 ### For browser plugin development
+
+To develop and test browser plugin specific scripts such as content and background workers use the following method.
 
 1. Install the [Extensions Reloader](https://chromewebstore.google.com/detail/extensions-reloader/fimgfedafeadlieiabdeeaodndnlbhid)
 

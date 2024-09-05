@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./Dialog.css";
-import { runtime } from "webextension-polyfill";
+import { runtime } from "../../runtime";
 import scenario from "../../scenario.json";
 import { UpdateResultEvent } from "../UpdateResultEvent";
 

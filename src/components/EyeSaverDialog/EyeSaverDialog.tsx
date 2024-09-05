@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { runtime } from "webextension-polyfill";
+import { runtime } from "../../runtime";
+
+console.log("runtime", runtime)
 
 type TimeProps = {
   onDialogClosing: () => void;
